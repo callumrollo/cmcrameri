@@ -15,3 +15,4 @@ import matplotlib.pyplot as plt
 import numpy as mp
 plt.pcolor(np.random.rand(10,10), cmap=cm.batlow) # or any of the other colourmaps made by Fabio Crameri
 ```
+You can access all the colourmaps by cm.colormapname you can also use tab autocompletion. For a reversed colourmap, append `_r` to the colormap name

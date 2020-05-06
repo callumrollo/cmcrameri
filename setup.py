@@ -6,7 +6,7 @@ from distutils.core import setup
 setup(
   name = 'cmcrameri',        
   packages = ['cmcrameri'],  
-  version = '0.2',  
+  version = '0.4',  
   license='MIT',   
   description = 'Perceptually uniform colourmaps',   
   author = 'Callum Rollo',         
