@@ -12,7 +12,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
   name = 'cmcrameri',        
   packages = ['cmcrameri'],  
-  version = '0.8',  
+  version = '0.9',  
   license='MIT',   
   long_description=long_description,
   long_description_content_type='text/markdown',
