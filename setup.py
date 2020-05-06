@@ -9,8 +9,6 @@ setup(
   version = '0.2',  
   license='MIT',   
   description = 'Perceptually uniform colourmaps',   
-  long_description=open('README.md').read(),
-  long_description_content_type='text/markdown',
   author = 'Callum Rollo',         
   author_email = 'c.rollo@outlook.com',      
   url = 'https://github.com/callumrollo/cmcrameri',  
