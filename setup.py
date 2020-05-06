@@ -10,19 +10,12 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='an_example_package',
-    # other arguments omitted
-    long_description=long_description,
-    long_description_content_type='text/markdown'
-)
-
-setup(
   name = 'cmcrameri',        
   packages = ['cmcrameri'],  
   version = '0.8',  
   license='MIT',   
   long_description=long_description,
-  long_description_content_type='text/markdown'
+  long_description_content_type='text/markdown',
   description = 'Perceptually uniform colourmaps',   
   author = 'Callum Rollo',         
   author_email = 'c.rollo@outlook.com',      
