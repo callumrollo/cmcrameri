@@ -1,18 +1,35 @@
 # cmcrameri
 
-This is a basic wrapper around Fabio Crameri's perceptually uniform colour maps
+This is a basic Python wrapper around Fabio Crameri's perceptually uniform colour maps
 
 http://www.fabiocrameri.ch/colourmaps.php
 
+All credit for creating the colourmaps to Fabio. Any errors in the Python implementation of said colourmaps are my own.
+
 Current version is based on Scientific Colourmaps Version 6.0.4 (06.01.2020)
 
-**Work in progress** Not ready for public use yet! I haven't made a package before. The eventual aim is for this repo to serve PyPI and anaconda
+**Work in progress** Not ready for public use yet! I haven't shipped a package before. The eventual aim is for this repo to serve PyPi and conda
 
-To use these colourmaps, clone/download the repo, add the folder to your path then:
+### Install
+`pip install cmcrameri`
+
+### Basic use example
+
 ```python
 from cmcrameri import cm
 import matplotlib.pyplot as plt
 import numpy as mp
 plt.pcolor(np.random.rand(10,10), cmap=cm.batlow) # or any of the other colourmaps made by Fabio Crameri
 ```
-You can access all the colourmaps by cm.colormapname you can also use tab autocompletion. For a reversed colourmap, append `_r` to the colormap name
+### Extra instructions
+You can access all the core colourmaps from Fabio Crameri's list by `cm.<colormapname>`
+
+You can also use tab autocompletion on `cm` if your editor supports it
+
+For a reversed colourmap, append `_r` to the colourmap name
+
+For a sample of all the available colourmaps without leaving the comfort of your Python session
+```python
+from cmcrameri.cm import show_cmaps 
+show_cmaps()
+```
