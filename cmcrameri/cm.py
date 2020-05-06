@@ -14,7 +14,6 @@ import matplotlib.pyplot as plt
 import os
 # Find the colormap text files and make a list of the paths
 text_file_folder = os.path.join(os.path.dirname(__file__), 'cmaps')
-print(Path(os.path.join(os.path.split(__file__)[0], 'cmaps')))
 paths = list(Path(text_file_folder).glob('*.txt'))
 crameri_cmaps = dict()
 crameri_cmaps_r = dict()
