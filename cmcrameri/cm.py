@@ -12,9 +12,8 @@ from pathlib import Path
 from matplotlib.colors import LinearSegmentedColormap
 import matplotlib.pyplot as plt
 import os
-
 # Find the colormap text files and make a list of the paths
-paths = list((Path(__file__).parent.absolute() / "cmaps").glob('*.txt'))
+paths = list((Path(os.path.join(os.path.split(__file__)[0], 'cmaps'))).glob('*.txt'))
 crameri_cmaps = dict()
 crameri_cmaps_r = dict()
 for cmap_path in paths:
