@@ -6,7 +6,7 @@ from distutils.core import setup
 setup(
   name = 'cmcrameri',        
   packages = ['cmcrameri'],  
-  version = '0.6',  
+  version = '0.7',  
   license='MIT',   
   description = 'Perceptually uniform colourmaps',   
   author = 'Callum Rollo',         
@@ -18,4 +18,7 @@ setup(
           'matplotlib',
           'numpy',
       ],
+  packages=['mypkg'],                      
+  package_dir={'mypkg': 'cmcrameri'},     
+  package_data={'cmcrameri': ['cmaps/*.txt']},
 )
