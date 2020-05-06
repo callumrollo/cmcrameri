@@ -18,7 +18,7 @@ Current version is based on Scientific Colourmaps Version 6.0.4 (06.01.2020)
 ```python
 from cmcrameri import cm
 import matplotlib.pyplot as plt
-import numpy as mp
+import numpy as np
 plt.pcolor(np.random.rand(10,10), cmap=cm.batlow) # or any of the other colourmaps made by Fabio Crameri
 ```
 ### Extra instructions
