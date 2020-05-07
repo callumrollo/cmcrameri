@@ -1,3 +1,4 @@
+![Python package](https://github.com/callumrollo/cmcrameri/workflows/Python%20package/badge.svg)
 # cmcrameri
 
 This is a basic Python wrapper around Fabio Crameri's perceptually uniform colour maps
@@ -19,7 +20,10 @@ Current version is based on Scientific Colourmaps Version 6.0.4 (06.01.2020)
 from cmcrameri import cm
 import matplotlib.pyplot as plt
 import numpy as np
-plt.pcolor(np.random.rand(10,10), cmap=cm.batlow) # or any of the other colourmaps made by Fabio Crameri
+x = np.linspace(0, 100, 100)[None, :]  
+plt.imshow(x, aspect='auto', cmap=cm.batlow) # or any of the other colourmaps made by Fabio Crameri
+plt.axis('off')
+plt.show()
 ```
 ### Extra instructions
 You can access all the core colourmaps from Fabio Crameri's list by `cm.<colormapname>`
