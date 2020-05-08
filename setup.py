@@ -12,7 +12,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
   name = 'cmcrameri',        
   packages = ['cmcrameri'],  
-  version = '0.11',  
+  version = '0.12',  
   license='MIT',   
   long_description=long_description,
   long_description_content_type='text/markdown',
@@ -28,4 +28,5 @@ setup(
       ],
   package_dir={'mypkg': 'cmcrameri'},     
   package_data={'cmcrameri': ['cmaps/*.txt']},
+  data_files=[("",["LICENSE"])]
 )
