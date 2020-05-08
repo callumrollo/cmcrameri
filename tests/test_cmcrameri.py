@@ -12,7 +12,6 @@ from cmcrameri import cm
 
 def test_find_files():
     assert len(cm.paths) > 0
-    print(f"Number of text files: {len(cm.paths)}")
 
 
 def test_cmap_import():
@@ -26,8 +25,6 @@ def test_cmap_import():
             cmap_names.append(name)
     # Should be twice as many colour maps as files (original and reversed versions)
     assert no_cmaps == 2*len(cm.paths)
-    print(f"Number of colormaps: {no_cmaps}\n"
-          f"Names of colourmpas: {cmap_names}")
 
 test_find_files()
 test_cmap_import()
