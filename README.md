@@ -9,11 +9,18 @@ All credit for creating the colourmaps to Fabio. Any errors in the Python implem
 
 Current version is based on Scientific Colourmaps Version 6.0.4 (06.01.2020)
 
-**Work in progress** Not ready for public use yet! I haven't shipped a package before. The eventual aim is for this repo to serve PyPi and conda
-
 ### Install
+
+With pip:
+
 `pip install cmcrameri`
 
+With conda:
+
+```
+conda config --add channels conda-forge
+conda install cmcrameri
+```
 ### Basic use example
 
 ```python
