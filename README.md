@@ -1,13 +1,13 @@
 ![Python package](https://github.com/callumrollo/cmcrameri/workflows/Python%20package/badge.svg)
 # cmcrameri
 
-This is a basic Python wrapper around Fabio Crameri's perceptually uniform colour maps
+This is a Python wrapper around Fabio Crameri's perceptually uniform colour maps
 
 http://www.fabiocrameri.ch/colourmaps.php
 
-All credit for creating the colourmaps to Fabio. Any errors in the Python implementation of said colourmaps are my own.
+All credit for creating the colourmaps to Fabio. Any errors in the Python implementation of colourmaps are my own.
 
-Current version is based on Scientific Colourmaps Version 6.0.4 (06.01.2020)
+This version is based on Scientific Colourmaps Version 6.0.4 (06.01.2020)
 
 ### Install
 
@@ -21,7 +21,7 @@ With conda:
 conda config --add channels conda-forge
 conda install cmcrameri
 ```
-### Basic use example
+### Usage example
 
 ```python
 from cmcrameri import cm
@@ -35,7 +35,7 @@ plt.show()
 ### Extra instructions
 You can access all the core colourmaps from Fabio Crameri's list by `cm.<colormapname>`
 
-You can also use tab autocompletion on `cm` if your editor supports it
+You can use tab autocompletion on `cm` if your editor supports it
 
 For a reversed colourmap, append `_r` to the colourmap name
 
