@@ -48,3 +48,7 @@ For a sample of all the available colourmaps without leaving the comfort of your
 from cmcrameri.cm import show_cmaps 
 show_cmaps()
 ```
+
+### License
+This work is licensed under an [MIT license](https://mit-license.org/).
+
