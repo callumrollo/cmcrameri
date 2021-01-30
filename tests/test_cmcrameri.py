@@ -19,12 +19,15 @@ def test_cmap_import():
     no_cmaps = 0
     cmap_names = []
     for name, cmap in vars(cm).items():
+        increment = 1
         # See if it is a colormap.
         if isinstance(cmap, matplotlib.colors.LinearSegmentedColormap):
-            no_cmaps += 1
+            if name[-1] != 'S':
+                increment = 0.5
+            no_cmaps += increment
             cmap_names.append(name)
-    # Should be twice as many colour maps as files (original and reversed versions)
-    assert no_cmaps == 2*len(cm.paths)
+    # Should be as many colour maps as files plus reversed for non categorical ones
+    assert int(no_cmaps) == len(cm.paths)
 
 test_find_files()
 test_cmap_import()
