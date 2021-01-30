@@ -3,6 +3,7 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)]()
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)]()
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)]()
+[![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)]()
 
 [![Downloads](https://pepy.tech/badge/cmcrameri)](https://pepy.tech/project/cmcrameri)     (PyPI)
 
@@ -48,7 +49,9 @@ You can use tab autocompletion on `cm` if your editor supports it
 
 For a reversed colourmap, append `_r` to the colourmap name
 
-For a sample of all the available colourmaps without leaving the comfort of your Python session
+Categorical colormaps have the suffix `S`
+
+For an image of all the available colourmaps without leaving the comfort of your Python session
 ```python
 from cmcrameri.cm import show_cmaps 
 show_cmaps()
