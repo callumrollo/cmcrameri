@@ -17,13 +17,17 @@ text_file_folder = os.path.join(os.path.dirname(__file__), 'cmaps')
 paths = list(Path(text_file_folder).glob('*.txt'))
 crameri_cmaps = dict()
 crameri_cmaps_r = dict()
+crameri_cmaps_s = dict()
 for cmap_path in paths:
     # Name of colour map taken from text file
     cmap_name = os.path.split(cmap_path)[1][:-4]
-    cm_data = np.loadtxt(cmap_path)
+    cm_data = np.loadtxt(str(cmap_path))
     # Make a linear segmented colour map
+    if cmap_name[-1] == 'S':
+        crameri_cmaps_s[cmap_name] = LinearSegmentedColormap.from_list(cmap_name, cm_data)
+        continue
     crameri_cmaps[cmap_name] = LinearSegmentedColormap.from_list(cmap_name, cm_data)
-    # reverse the colour map and add this to the dictionary crameri_cmaps_r
+    # reverse the colour map and add this to the dictionary crameri_cmaps_r, mpt fpr categorical maps
     crameri_cmaps_r[cmap_name + '_r'] = LinearSegmentedColormap.from_list(cmap_name + '_r', cm_data[::-1, :])
 
 
@@ -43,9 +47,9 @@ def show_cmaps():
         colourmap = crameri_cmaps[cmap_selected]
         axs[c].pcolor(x, cmap=colourmap)
         axs[c].text(5, -0.3, cmap_selected, fontsize=30)
-    # plt.savefig('colormaps')
 
 
 # So colourmaps can be called in other programs
 locals().update(crameri_cmaps)
 locals().update(crameri_cmaps_r)
+locals().update(crameri_cmaps_s)
