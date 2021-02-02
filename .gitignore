@@ -3,3 +3,4 @@ __pycache__
 dist
 cmcrameri.egg-info
 venv
+.eggs
