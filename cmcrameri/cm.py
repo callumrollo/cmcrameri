@@ -46,7 +46,7 @@ def show_cmaps():
     for c, cmap_selected in enumerate(sorted(crameri_cmaps.keys())):
         colourmap = crameri_cmaps[cmap_selected]
         axs[c].pcolor(x, cmap=colourmap)
-        axs[c].text(5, -0.3, cmap_selected, fontsize=30)
+        axs[c].text(5, -0.3, cmap_selected, fontsize=26)
 
 
 # So colourmaps can be called in other programs
