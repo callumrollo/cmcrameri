@@ -17,7 +17,7 @@ http://www.fabiocrameri.ch/colourmaps.php
 
 All credit for creating the colourmaps to Fabio. Any errors in the Python implementation of colourmaps are my own.
 
-This version is based on Scientific Colourmaps Version 6.0.4 (06.01.2020)
+This version is based on Scientific Colourmaps Version 7.0 (02.02.2021)
 
 ### Install
 
@@ -52,6 +52,7 @@ For a reversed colourmap, append `_r` to the colourmap name
 Categorical colormaps have the suffix `S`
 
 For an image of all the available colourmaps without leaving the comfort of your Python session
+
 ```python
 from cmcrameri.cm import show_cmaps 
 show_cmaps()

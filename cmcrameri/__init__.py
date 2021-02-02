@@ -11,4 +11,6 @@ from . import cm
 
 __authors__ = ['Callum Rollo <c.rollo@outlook.com>']
 
-# __version__ = "2.0"
+__version__ = "1.2"
+
+__scm_version__ = "7.0"
