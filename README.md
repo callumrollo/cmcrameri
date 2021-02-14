@@ -58,6 +58,12 @@ from cmcrameri.cm import show_cmaps
 show_cmaps()
 ```
 
+To make the underlying RGB values available, the original text files are shipped as part of the package. Find them on your system with:
+```python
+from cmcrameri import cm
+cm.paths
+```
+
 ### License
 This work is licensed under an [MIT license](https://mit-license.org/).
 
