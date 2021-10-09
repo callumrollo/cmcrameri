@@ -25,10 +25,13 @@ for cmap_path in paths:
     # Make a linear segmented colour map
     if cmap_name[-1] == 'S':
         crameri_cmaps_s[cmap_name] = LinearSegmentedColormap.from_list(cmap_name, cm_data)
+        plt.cm.register_cmap(name='cmc.' + cmap_name, cmap=crameri_cmaps_s[cmap_name])
         continue
     crameri_cmaps[cmap_name] = LinearSegmentedColormap.from_list(cmap_name, cm_data)
+    plt.cm.register_cmap(name='cmc.' + cmap_name, cmap=crameri_cmaps[cmap_name])
     # reverse the colour map and add this to the dictionary crameri_cmaps_r, mpt fpr categorical maps
     crameri_cmaps_r[cmap_name + '_r'] = LinearSegmentedColormap.from_list(cmap_name + '_r', cm_data[::-1, :])
+    plt.cm.register_cmap(name='cmc.' + cmap_name + '_r', cmap=crameri_cmaps_r[cmap_name + '_r'])
 
 
 def show_cmaps():
