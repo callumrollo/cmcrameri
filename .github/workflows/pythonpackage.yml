@@ -13,15 +13,17 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: {{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10", "pypy3"]
+        os: [ubuntu-20.04]
 
     steps:
     - uses: actions/checkout@v2
       with:
         key: ${{ runner.os }}-example-${{ secrets.CACHE_VERSION }}
+        fetch-depth: 0
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
