@@ -3,6 +3,8 @@
 
 name: Python package
 
+key: ${{ runner.os }}-example-${{ secrets.CACHE_VERSION }}
+
 on:
   push:
     branches: [ master, citests, to-3.9]
