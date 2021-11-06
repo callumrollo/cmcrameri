@@ -133,17 +133,29 @@ def show_cmaps(*, ncols=6, figwidth=8):
         istarts.append(nrows)
         nrows += math.ceil(n / ncols)
         if group != groups["Cyclic"]:
-            nrows += 1  # spacer row
+            nrows += 1  # group spacer row
 
     hratios = [1 for _ in range(nrows)]
+    hrel_spacer = 0.3
     for i in istarts:
-        hratios[i-1] = 0.3  # spacer row
+        hratios[i-1] = hrel_spacer  # group spacer row
+
+    nrows_titles = len(groups)
+    nrows_cmaps = nrows - nrows_titles
+    hrow = 0.8
+
+    hbottom = 0.2
+    htop = 0.05
+    figheight = hbottom + htop + hrow*nrows_cmaps + hrow*hrel_spacer*nrows_titles
 
     fig, axs = plt.subplots(nrows, ncols,
-        figsize=(figwidth, 0.8*(nrows - len(groups) + 1)),
+        figsize=(figwidth, figheight),
         gridspec_kw=dict(
-            left=0.01, right=0.99, top=0.99, bottom=0.043 * 6/nrows,
-            hspace=0.8, wspace=0.08,
+            left=0.01, right=0.99,
+            top=1 - htop/figheight,
+            bottom=hbottom/figheight,
+            hspace=0.8 / np.mean(hratios),
+            wspace=0.08,
             height_ratios=hratios
         )
     )
@@ -155,13 +167,13 @@ def show_cmaps(*, ncols=6, figwidth=8):
     for istart, (group_name, group) in zip(istarts, groups.items()):
 
         # Group label
-        ax_ = axs[istart-1, 0]
-        ax_.text(0.01, 0, group_name, size=24, c="0.4", style="italic", 
-            va="center", ha="left", transform=ax_.transAxes)
+        ax0 = axs[istart, 0]
+        ax0.text(0.01, 1.02, group_name, size=24, c="0.4", style="italic", 
+            va="bottom", ha="left", transform=ax0.transAxes)
 
         for ax, cmap_name in zip(axs[istart:].flat, group):
 
             cmap = cmaps[cmap_name]
             ax.pcolor(x, cmap=cmap)
-            ax.text(0.01 * ncols/6, -0.02, cmap.name, size=14, color="0.2",
+            ax.text(0.01 * ncols/6, -0.03, cmap.name, size=14, color="0.2",
                 va="top", transform=ax.transAxes)
