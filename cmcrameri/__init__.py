@@ -4,9 +4,14 @@ This is mererly a wrapper for previosuly created colour maps. All credit to Fabi
 http://www.fabiocrameri.ch/colourmaps.php
 See README.md for an overview and instructions
 """
-
 from __future__ import absolute_import
 from . import cm
+
+__all__ = (
+    "cm",
+    "paths",
+    "show_cmaps",
+)
 
 
 __authors__ = ['Callum Rollo <c.rollo@outlook.com>']

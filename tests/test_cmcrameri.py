@@ -1,10 +1,11 @@
 """
 Test that the program a) finds the text files and b) creates colourmaps
 """
+import sys
+from pathlib import Path
+
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.pyplot import get_cmap
-from pathlib import Path
-import sys
 
 library_dir = Path(__file__).parent.parent.absolute()
 sys.path.append(str(library_dir))
@@ -41,6 +42,7 @@ def test_get_cmap():
             assert alt_cmap is cmap
 
 
-test_find_files()
-test_cmap_import()
-test_get_cmap()
+if __name__ == "__main__":
+    test_find_files()
+    test_cmap_import()
+    test_get_cmap()
