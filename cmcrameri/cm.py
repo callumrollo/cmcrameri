@@ -111,40 +111,57 @@ paths, cmaps = _load_cmaps()
 locals().update(cmaps)
 
 
-def show_cmaps():
+def show_cmaps(*, ncols=6, figwidth=8):
     """
-    A rough function for a quick plot of the colourmaps.
-    Nowhere near as pretty as the original,
-    see https://www.fabiocrameri.ch/colourmaps/
+    For the original, see
+    https://www.fabiocrameri.ch/colourmaps/
     """
-    from itertools import chain
+    import math
 
     x = np.linspace(0, 100, 100)[np.newaxis, :]
 
-    n_all = len(cmaps)
-    n_seq = len(_cmap_names_sequential)
-    n_div = len(_cmap_names_diverging)
-    n_mseq = len(_cmap_names_multi_sequential)
-    n_cyc = len(_cmap_names_cyclic)
-    n_cat = len(_cmap_base_names_categorical)
+    groups = {
+        "Sequential": _cmap_names_sequential,
+        "Diverging": _cmap_names_diverging,
+        "Multi-sequential": _cmap_names_multi_sequential,
+        "Cyclic": _cmap_names_cyclic,
+    }
+    nrows = 1
+    istarts = []
+    for group in groups.values():
+        n = len(group)
+        istarts.append(nrows)
+        nrows += math.ceil(n / ncols)
+        if group != groups["Cyclic"]:
+            nrows += 1  # spacer row
 
-    ncols = 7
-    nrows = int(np.ceil((n_seq + n_div + n_mseq + n_cyc) / ncols))
+    hratios = [1 for _ in range(nrows)]
+    for i in istarts:
+        hratios[i-1] = 0.3  # spacer row
 
-    fig, axs = plt.subplots(nrows, ncols, figsize=(22, 10))
-    fig.subplots_adjust(hspace=.8, wspace=.08)
+    fig, axs = plt.subplots(nrows, ncols,
+        figsize=(figwidth, 0.8*(nrows - len(groups) + 1)),
+        gridspec_kw=dict(
+            left=0.01, right=0.99, top=0.99, bottom=0.043 * 6/nrows,
+            hspace=0.8, wspace=0.08,
+            height_ratios=hratios
+        )
+    )
     fig.set_tight_layout(False)
 
     for ax in axs.flat:
         ax.axis('off')
 
-    for ax, cmap_name in zip(
-        axs.flat, 
-        sorted(chain(
-            _cmap_names_sequential, _cmap_names_diverging,
-            _cmap_names_multi_sequential, _cmap_names_cyclic,
-        ))
-    ):
-        cmap = globals()[cmap_name]
-        ax.pcolor(x, cmap=cmap)
-        ax.text(5, -0.3, cmap.name, fontsize=26)
+    for istart, (group_name, group) in zip(istarts, groups.items()):
+
+        # Group label
+        ax_ = axs[istart-1, 0]
+        ax_.text(0.01, 0, group_name, size=24, c="0.4", style="italic", 
+            va="center", ha="left", transform=ax_.transAxes)
+
+        for ax, cmap_name in zip(axs[istart:].flat, group):
+
+            cmap = cmaps[cmap_name]
+            ax.pcolor(x, cmap=cmap)
+            ax.text(0.01 * ncols/6, -0.02, cmap.name, size=14, color="0.2",
+                va="top", transform=ax.transAxes)
