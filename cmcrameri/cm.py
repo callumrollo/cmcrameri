@@ -7,6 +7,7 @@ Created by Callum Rollo
 2020-05-06
 """
 from pathlib import Path
+from types import SimpleNamespace
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -32,6 +33,14 @@ multi_sequential_cmap_names = (
     "oleron", "bukavu", "fes",
 )
 
+categorical_cmap_base_names = tuple(
+    name
+    for name in sequential_cmap_names
+    if name not in {"batlowW", "batlowK"}
+)
+
+cm = SimpleNamespace()  # or NamedTuple?
+
 
 # Find the colormap text files and make a list of the paths
 text_file_folder = Path(__file__).parent / 'cmaps'
@@ -50,9 +59,12 @@ for cmap_path in paths:
     is_sequential = cmap_name_base in sequential_cmap_names
     is_diverging = cmap_name_base in diverging_cmap_names
     is_multi_sequential = cmap_name_base in multi_sequential_cmap_names
+
+    # Check categorization
     assert sum(
         [is_cyclic, is_sequential, is_diverging, is_multi_sequential]
     ) == 1, f"{cmap_name} not categorized properly"
+    assert not is_categorical or cmap_name_base in categorical_cmap_base_names
 
     # Load data
     data = np.loadtxt(cmap_path)
