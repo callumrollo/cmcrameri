@@ -118,7 +118,7 @@ def show_cmaps(*, ncols=6, figwidth=8):
     """
     import math
 
-    x = np.linspace(0, 100, 100)[np.newaxis, :]
+    x = np.linspace(0, 1, 256)[np.newaxis, :]
 
     groups = {
         "Sequential": _cmap_names_sequential,
@@ -162,7 +162,7 @@ def show_cmaps(*, ncols=6, figwidth=8):
     fig.set_tight_layout(False)
 
     for ax in axs.flat:
-        ax.axis('off')
+        ax.set_axis_off()
 
     for istart, (group_name, group) in zip(istarts, groups.items()):
 
@@ -175,5 +175,5 @@ def show_cmaps(*, ncols=6, figwidth=8):
 
             cmap = cmaps[cmap_name]
             ax.pcolor(x, cmap=cmap)
-            ax.text(0.01 * ncols/6, -0.03, cmap.name, size=14, color="0.2",
+            ax.text(0.01 * ncols/6, -0.03, cmap_name, size=14, color="0.2",
                 va="top", transform=ax.transAxes)
