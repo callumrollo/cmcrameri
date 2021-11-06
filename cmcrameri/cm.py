@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-sequential_cmap_names = (
+_cmap_names_sequential = (
     "batlow", "batlowW", "batlowK",
     "devon", "lajolla", "bamako",
     "davos", "bilbao", "nuuk",
@@ -19,33 +19,33 @@ sequential_cmap_names = (
     "acton", "turku", "imola",
 )
 
-diverging_cmap_names = (
+_cmap_names_diverging = (
     "broc", "cork", "vik",
     "lisbon", "tofino", "berlin",
     "roma", "bam", "vanimo",
 )
 
-multi_sequential_cmap_names = (
+_cmap_names_multi_sequential = (
     "oleron", "bukavu", "fes",
 )
 
-_categorical_cmap_base_names = tuple(
+_cmap_base_names_categorical = tuple(
     name
-    for name in sequential_cmap_names
+    for name in _cmap_names_sequential
     if name not in {"batlowW", "batlowK"}
 )
-categorical_cmap_names = tuple(
+_cmap_names_categorical = tuple(
     f"{name}S"
-    for name in _categorical_cmap_base_names
+    for name in _cmap_base_names_categorical
 )
 
-_cyclic_cmap_base_names = (
+_cmap_base_names_cyclic = (
     "roma", "bam",
     "broc", "cork", "vik",
 )
-cyclic_cmap_names = tuple(
+_cmap_names_cyclic = tuple(
     f"{name}O"
-    for name in _cyclic_cmap_base_names
+    for name in _cmap_base_names_cyclic
 )
 
 def _load_cmaps():
@@ -55,19 +55,17 @@ def _load_cmaps():
     # Prepended to cmap names when registering
     cmap_reg_prefix = "cmc."
 
+    cmaps = {}
 
     def register(cmap):
         # Register in Matplotlib
         plt.cm.register_cmap(name=f"{cmap_reg_prefix}{cmap.name}", cmap=cmap)
-
-        # And in the `cmcrameri.cm` namespace
-        globals().update({cmap.name: cmap})
-
+        # Add to dict
+        cmaps[cmap.name] = cmap
 
     # Find the colormap text files and make a list of the paths
     cmap_data_dir = Path(__file__).parent / 'cmaps'
     paths = sorted(cmap_data_dir.glob('*.txt'))
-    cmaps = {}
     for cmap_path in paths:
         # Name of colour map is taken from the text file name
         cmap_name = cmap_path.stem
@@ -77,9 +75,9 @@ def _load_cmaps():
         is_cyclic = cmap_name.endswith("O")
         cmap_name_base = cmap_name if not (is_categorical or is_cyclic) else cmap_name[:-1]
         if not is_cyclic:
-            is_sequential = cmap_name_base in sequential_cmap_names
-            is_diverging = cmap_name_base in diverging_cmap_names
-            is_multi_sequential = cmap_name_base in multi_sequential_cmap_names
+            is_sequential = cmap_name_base in _cmap_names_sequential
+            is_diverging = cmap_name_base in _cmap_names_diverging
+            is_multi_sequential = cmap_name_base in _cmap_names_multi_sequential
         else:
             is_sequential = is_diverging = is_multi_sequential = False
 
@@ -87,8 +85,8 @@ def _load_cmaps():
         assert sum(
             [is_cyclic, is_sequential, is_diverging, is_multi_sequential]
         ) == 1, f"{cmap_name} not categorized properly"
-        assert not is_categorical or cmap_name_base in _categorical_cmap_base_names
-        assert not is_cyclic or cmap_name_base in _cyclic_cmap_base_names, cmap_name
+        assert not is_categorical or cmap_name_base in _cmap_base_names_categorical
+        assert not is_cyclic or cmap_name_base in _cmap_base_names_cyclic, cmap_name
 
         # Load data
         data = np.loadtxt(cmap_path)
@@ -104,10 +102,13 @@ def _load_cmaps():
         if not is_categorical:
             register(cmap.reversed())
 
-    return paths
+    return paths, cmaps
 
 
-paths = _load_cmaps()
+paths, cmaps = _load_cmaps()
+
+# Add all cmaps to the `cmcrameri.cm` namespace
+locals().update(cmaps)
 
 
 def show_cmaps():
@@ -120,12 +121,12 @@ def show_cmaps():
 
     x = np.linspace(0, 100, 100)[np.newaxis, :]
 
-    # all_names = list(vars(cm))
-    n_seq = len(sequential_cmap_names)
-    n_div = len(diverging_cmap_names)
-    n_mseq = len(multi_sequential_cmap_names)
-    n_cyc = len(cyclic_cmap_names)
-    # n_cat = len(categorical_cmap_base_names)
+    n_all = len(cmaps)
+    n_seq = len(_cmap_names_sequential)
+    n_div = len(_cmap_names_diverging)
+    n_mseq = len(_cmap_names_multi_sequential)
+    n_cyc = len(_cmap_names_cyclic)
+    n_cat = len(_cmap_base_names_categorical)
 
     ncols = 7
     nrows = int(np.ceil((n_seq + n_div + n_mseq + n_cyc) / ncols))
@@ -140,8 +141,8 @@ def show_cmaps():
     for ax, cmap_name in zip(
         axs.flat, 
         sorted(chain(
-            sequential_cmap_names, diverging_cmap_names, 
-            multi_sequential_cmap_names, cyclic_cmap_names,
+            _cmap_names_sequential, _cmap_names_diverging,
+            _cmap_names_multi_sequential, _cmap_names_cyclic,
         ))
     ):
         cmap = globals()[cmap_name]
