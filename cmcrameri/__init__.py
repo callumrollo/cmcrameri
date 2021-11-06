@@ -5,8 +5,7 @@ http://www.fabiocrameri.ch/colourmaps.php
 See README.md for an overview and instructions
 """
 from __future__ import absolute_import
-from . import cm
-from .cm import show_cmaps
+from ._cm import cm, paths, show_cmaps
 
 __all__ = (
     "cm",
