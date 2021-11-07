@@ -162,7 +162,7 @@ def show_cmaps(*, ncols=6, figwidth=8):
             left=0.01, right=0.99,
             top=1 - htop/figheight,
             bottom=hbottom/figheight,
-            hspace=hspace / np.mean(hratios),
+            hspace=hspace/np.mean(hratios),
             wspace=0.08,
             height_ratios=hratios
         )
@@ -185,3 +185,8 @@ def show_cmaps(*, ncols=6, figwidth=8):
             ax.imshow(x, cmap=cmap, aspect="auto")
             ax.text(0.01 * ncols/6, -0.03, cmap_name, size=14, color="0.2",
                 va="top", transform=ax.transAxes)
+
+
+if __name__ == "__main__":
+    show_cmaps()
+    plt.savefig("colormaps.png", dpi=200)

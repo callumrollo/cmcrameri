@@ -39,7 +39,7 @@ import cmcrameri.cm as cmc
 import matplotlib.pyplot as plt
 import numpy as np
 
-x = np.linspace(0, 100, 100)[np.newaxis, :]  
+x = np.linspace(0, 1, 100)[np.newaxis, :]
 
 plt.imshow(x, aspect='auto', cmap=cmc.batlow)
 plt.axis('off')
