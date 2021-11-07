@@ -1,7 +1,6 @@
 """
-Perceptually uniform colourmaps for geosciences
-
-Packaging of colourmaps created by Fabio Crameri http://www.fabiocrameri.ch/colourmaps.php
+Packaging of colour maps created by Fabio Crameri
+https://www.fabiocrameri.ch/colourmaps/
 
 Created by Callum Rollo
 2020-05-06
