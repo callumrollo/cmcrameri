@@ -120,33 +120,41 @@ def show_cmaps(*, ncols=6, figwidth=8):
 
     x = np.linspace(0, 1, 256)[np.newaxis, :]
 
-    groups = {
-        "Sequential": _cmap_names_sequential,
-        "Diverging": _cmap_names_diverging,
-        "Multi-sequential": _cmap_names_multi_sequential,
-        "Cyclic": _cmap_names_cyclic,
-    }
+    groups = (
+        ("Sequential", _cmap_names_sequential),
+        ("Diverging", _cmap_names_diverging),
+        ("Multi-sequential", _cmap_names_multi_sequential),
+        ("Cyclic", _cmap_names_cyclic),
+    )
+
     nrows = 1
     istarts = []
-    for group in groups.values():
+    for group_name, group in groups:
         n = len(group)
         istarts.append(nrows)
         nrows += math.ceil(n / ncols)
-        if group != groups["Cyclic"]:
+        if group_name != groups[-1][0]:
             nrows += 1  # group spacer row
-
-    hratios = [1 for _ in range(nrows)]
-    hrel_spacer = 0.3
-    for i in istarts:
-        hratios[i-1] = hrel_spacer  # group spacer row
 
     nrows_titles = len(groups)
     nrows_cmaps = nrows - nrows_titles
-    hrow = 0.8
 
+    hrel_spacer = 0.3  # spacer height relative cmap row height
+    hratios = [1 for _ in range(nrows)]
+    for i in istarts:
+        hratios[i-1] = hrel_spacer  # group spacer row
+
+    hrow = 0.4  # size of cmap row
+    hspace = 0.7  # hspace, relative to `hrow`
     hbottom = 0.2
     htop = 0.05
-    figheight = hbottom + htop + hrow*nrows_cmaps + hrow*hrel_spacer*nrows_titles
+    figheight = (
+        hbottom + 
+        htop + 
+        hrow*nrows_cmaps + 
+        hrow*hrel_spacer*nrows_titles + 
+        hrow*hspace*(nrows - 1)
+    )
 
     fig, axs = plt.subplots(nrows, ncols,
         figsize=(figwidth, figheight),
@@ -154,7 +162,7 @@ def show_cmaps(*, ncols=6, figwidth=8):
             left=0.01, right=0.99,
             top=1 - htop/figheight,
             bottom=hbottom/figheight,
-            hspace=0.8 / np.mean(hratios),
+            hspace=hspace / np.mean(hratios),
             wspace=0.08,
             height_ratios=hratios
         )
@@ -164,7 +172,7 @@ def show_cmaps(*, ncols=6, figwidth=8):
     for ax in axs.flat:
         ax.set_axis_off()
 
-    for istart, (group_name, group) in zip(istarts, groups.items()):
+    for istart, (group_name, group) in zip(istarts, groups):
 
         # Group label
         ax0 = axs[istart, 0]
@@ -174,6 +182,6 @@ def show_cmaps(*, ncols=6, figwidth=8):
         for ax, cmap_name in zip(axs[istart:].flat, group):
 
             cmap = cmaps[cmap_name]
-            ax.pcolor(x, cmap=cmap)
+            ax.imshow(x, cmap=cmap, aspect="auto")
             ax.text(0.01 * ncols/6, -0.03, cmap_name, size=14, color="0.2",
                 va="top", transform=ax.transAxes)
