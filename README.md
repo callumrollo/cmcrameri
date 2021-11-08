@@ -70,7 +70,7 @@ show_cmaps()
 ```
 ![Figure demonstrating the colormaps](cmcrameri/colormaps.png)
 
-To make the underlying RGB values available, the original text files are shipped as part of the package.
+The original colormap text files are shipped as part of the package.
 Find them on your system with:
 ```python
 from cmcrameri.cm import paths
