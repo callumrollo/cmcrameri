@@ -11,12 +11,12 @@
 
 # cmcrameri
 
-This is a Python wrapper around Fabio Crameri's perceptually uniform colour maps.
+This is a Python wrapper around Fabio Crameri's perceptually uniform colormaps.
 
 <https://www.fabiocrameri.ch/colourmaps/>
 
-All credit for creating the colour maps to Fabio.
-Any errors in the Python implementation of colour maps are my own.
+All credit for creating the colormaps to Fabio.
+Any errors in the Python implementation of colormaps are my own.
 
 This version is based on *Scientific colour maps* [version 7.0](https://zenodo.org/record/4491293) (02.02.2021).
 
@@ -47,28 +47,28 @@ plt.show()
 ```
 Alternatively, the registered name string can be used.
 ```python
-import cmrameri  # required in order to register the colour maps
+import cmrameri  # required in order to register the colormaps with Matplotlib
 ...
 plt.imshow(x, aspect='auto', cmap='cmc.batlow')
 ```
 
 ### Extra instructions
 
-You can access all the core colourmaps from Fabio Crameri's list by `cmcrameri.cm.<colormapname>`.
+You can access all the core colormaps from Fabio Crameri's list by `cmcrameri.cm.<colormapname>`.
 
-You can use tab autocompletion on `cm` if your editor supports it.
+You can use tab autocompletion on `cmcrameri.cm` if your editor supports it.
 
-For a reversed colourmap, append `_r` to the colourmap name.
+For a reversed colormap, append `_r` to the colormap name.
 
 Categorical colormaps have the suffix `S`.
 
-For an image of all the available colourmaps without leaving the comfort of your Python session:
+For an image of all the available colormaps without leaving the comfort of your Python session:
 ```python
 from cmcrameri import show_cmaps
 
 show_cmaps()
 ```
-![Figure demonstrating colour maps](cmcrameri/colormaps.png)
+![Figure demonstrating the colormaps](cmcrameri/colormaps.png)
 
 To make the underlying RGB values available, the original text files are shipped as part of the package.
 Find them on your system with:

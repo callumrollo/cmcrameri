@@ -1,5 +1,5 @@
 """
-Packaging of colour maps created by Fabio Crameri
+Packaging of colormaps created by Fabio Crameri
 https://www.fabiocrameri.ch/colourmaps/
 
 Created by Callum Rollo
@@ -65,8 +65,10 @@ def _load_cmaps():
     # Find the colormap text files and make a list of the paths
     cmap_data_dir = Path(__file__).parent / 'cmaps'
     paths = sorted(cmap_data_dir.glob('*.txt'))
+
+    # Load data and generate Colormap objects
     for cmap_path in paths:
-        # Name of colour map is taken from the text file name
+        # Name of colormap is taken from the text file name
         cmap_name = cmap_path.stem
 
         # Categorize
@@ -84,7 +86,7 @@ def _load_cmaps():
         assert sum(
             [is_cyclic, is_sequential, is_diverging, is_multi_sequential]
         ) == 1, f"{cmap_name} not categorized properly"
-        assert not is_categorical or cmap_name_base in _cmap_base_names_categorical
+        assert not is_categorical or cmap_name_base in _cmap_base_names_categorical, cmap_name
         assert not is_cyclic or cmap_name_base in _cmap_base_names_cyclic, cmap_name
 
         # Load data

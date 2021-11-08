@@ -1,5 +1,5 @@
 """
-Test that the program a) finds the text files and b) creates colourmaps
+Test that the program a) finds the text files and b) creates colormaps
 """
 import sys
 from pathlib import Path
@@ -28,7 +28,7 @@ def test_cmap_import():
                 increment = 0.5
             no_cmaps += increment
             cmap_names.append(name)
-    # Should be as many colour maps as files plus reversed for non categorical ones
+    # Should be as many colormaps as files plus reversed for non categorical ones
     assert int(no_cmaps) == len(cm.paths)
 
 def test_get_cmap():
