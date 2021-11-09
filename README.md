@@ -11,59 +11,72 @@
 
 # cmcrameri
 
-This is a Python wrapper around Fabio Crameri's perceptually uniform colour maps
+This is a Python wrapper around Fabio Crameri's perceptually uniform colormaps.
 
-http://www.fabiocrameri.ch/colourmaps.php
+<https://www.fabiocrameri.ch/colourmaps/>
 
-All credit for creating the colourmaps to Fabio. Any errors in the Python implementation of colourmaps are my own.
+All credit for creating the colormaps to Fabio.
+Any errors in the Python implementation of colormaps are my own.
 
-This version is based on Scientific Colourmaps Version 7.0 (02.02.2021)
+This version is based on *Scientific colour maps* [version 7.0](https://zenodo.org/record/4491293) (02.02.2021).
 
 ### Install
 
-With pip:
-
-`pip install cmcrameri`
-
-With conda:
-
+With `pip`:
 ```
-conda config --add channels conda-forge
-conda install cmcrameri
+pip install cmcrameri
 ```
+
+With `conda`:
+```
+conda install -c conda-forge cmcrameri
+```
+
 ### Usage example
 
 ```python
-from cmcrameri import cm
+import cmcrameri.cm as cmc
 import matplotlib.pyplot as plt
 import numpy as np
-x = np.linspace(0, 100, 100)[None, :]  
-plt.imshow(x, aspect='auto', cmap=cm.batlow) # or any of the other colourmaps made by Fabio Crameri
+
+x = np.linspace(0, 1, 100)[np.newaxis, :]
+
+plt.imshow(x, aspect='auto', cmap=cmc.batlow)
 plt.axis('off')
 plt.show()
 ```
-### Extra instructions
-You can access all the core colourmaps from Fabio Crameri's list by `cm.<colormapname>`
-
-You can use tab autocompletion on `cm` if your editor supports it
-
-For a reversed colourmap, append `_r` to the colourmap name
-
-Categorical colormaps have the suffix `S`
-
-For an image of all the available colourmaps without leaving the comfort of your Python session
-
+Alternatively, the registered name string can be used.
 ```python
-from cmcrameri.cm import show_cmaps 
-show_cmaps()
+import cmrameri  # required in order to register the colormaps with Matplotlib
+...
+plt.imshow(x, aspect='auto', cmap='cmc.batlow')
 ```
 
-To make the underlying RGB values available, the original text files are shipped as part of the package. Find them on your system with:
+### Extra instructions
+
+You can access all the core colormaps from Fabio Crameri's list by `cmcrameri.cm.<colormapname>`.
+
+You can use tab autocompletion on `cmcrameri.cm` if your editor supports it.
+
+For a reversed colormap, append `_r` to the colormap name.
+
+Categorical colormaps have the suffix `S`.
+
+For an image of all the available colormaps without leaving the comfort of your Python session:
 ```python
-from cmcrameri import cm
-cm.paths
+from cmcrameri import show_cmaps
+
+show_cmaps()
+```
+![Figure demonstrating the colormaps](cmcrameri/colormaps.png)
+
+The original colormap text files are shipped as part of the package.
+Find them on your system with:
+```python
+from cmcrameri.cm import paths
+
+paths
 ```
 
 ### License
 This work is licensed under an [MIT license](https://mit-license.org/).
-

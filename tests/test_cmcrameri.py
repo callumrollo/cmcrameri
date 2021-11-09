@@ -1,10 +1,11 @@
 """
-Test that the program a) finds the text files and b) creates colourmaps
+Test that the program a) finds the text files and b) creates colormaps
 """
-from matplotlib.colors import LinearSegmentedColormap
-from matplotlib.pyplot import get_cmap
-from pathlib import Path
 import sys
+from pathlib import Path
+
+from matplotlib.colors import Colormap
+from matplotlib.pyplot import get_cmap
 
 library_dir = Path(__file__).parent.parent.absolute()
 sys.path.append(str(library_dir))
@@ -22,18 +23,18 @@ def test_cmap_import():
     for name, cmap in vars(cm).items():
         increment = 1
         # See if it is a colormap.
-        if isinstance(cmap, LinearSegmentedColormap):
+        if isinstance(cmap, Colormap):
             if name[-1] != 'S':
                 increment = 0.5
             no_cmaps += increment
             cmap_names.append(name)
-    # Should be as many colour maps as files plus reversed for non categorical ones
+    # Should be as many colormaps as files plus reversed for non categorical ones
     assert int(no_cmaps) == len(cm.paths)
 
 def test_get_cmap():
     for name, cmap in vars(cm).items():
         # See if it is a colormap.
-        if isinstance(cmap, LinearSegmentedColormap):
+        if isinstance(cmap, Colormap):
             # if cmap hasn't been correctly registered as
             # cmc.name, it will raise a ValueError
             alt_cmap = get_cmap('cmc.' + name)
@@ -41,6 +42,7 @@ def test_get_cmap():
             assert alt_cmap is cmap
 
 
-test_find_files()
-test_cmap_import()
-test_get_cmap()
+if __name__ == "__main__":
+    test_find_files()
+    test_cmap_import()
+    test_get_cmap()

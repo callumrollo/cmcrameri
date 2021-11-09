@@ -16,7 +16,7 @@ setup(
   license='MIT',   
   long_description=long_description,
   long_description_content_type='text/markdown',
-  description = 'Perceptually uniform colourmaps',   
+  description = 'Perceptually uniform colormaps by Fabio Crameri',
   author = 'Callum Rollo',         
   author_email = 'c.rollo@outlook.com',      
   url = 'https://github.com/callumrollo/cmcrameri',  
