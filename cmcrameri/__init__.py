@@ -20,6 +20,6 @@ __all__ = (
 
 __authors__ = ['Callum Rollo <c.rollo@outlook.com>']
 
-__version__ = "1.2"
+__version__ = "1.4"
 
 __scm_version__ = "7.0"

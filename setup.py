@@ -12,7 +12,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 setup(
   name = 'cmcrameri',        
   packages = ['cmcrameri'],  
-  version = '1.2',
+  version = '1.4',
   license='MIT',   
   long_description=long_description,
   long_description_content_type='text/markdown',
@@ -20,7 +20,7 @@ setup(
   author = 'Callum Rollo',         
   author_email = 'c.rollo@outlook.com',      
   url = 'https://github.com/callumrollo/cmcrameri',  
-  download_url = 'https://github.com/callumrollo/cmcrameri/v_01.tar.gz',  
+  download_url = 'https://github.com/callumrollo/cmcrameri/v_1.4.tar.gz',  
   keywords = ['colormaps', 'oceanography', 'plotting', 'visualization'],
   install_requires=[         
           'matplotlib',
