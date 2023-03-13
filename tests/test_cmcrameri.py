@@ -39,7 +39,7 @@ def test_get_cmap():
         if isinstance(cmap, Colormap):
             # if cmap hasn't been correctly registered as
             # cmc.name, it will raise a ValueError
-            alt_cmap = get_cmap('cmc.' + name)
+            alt_cmap = get_cmap("cmc." + name)
             # alt_cmap returned by get_cmap should be the same as cmap
             assert (np.array(cmap.colors) == np.array(alt_cmap.colors)).all()
 

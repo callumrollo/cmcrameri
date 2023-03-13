@@ -80,7 +80,9 @@ def _load_cmaps():
         if version.parse(matplotlib.__version__) < version.parse("3.5"):
             plt.cm.register_cmap(name=f"{cmap_reg_prefix}{cmap.name}", cmap=cmap)
         else:
-            matplotlib.colormaps.register(cmap=cmap, name=f"{cmap_reg_prefix}{cmap.name}")
+            matplotlib.colormaps.register(
+                cmap=cmap, name=f"{cmap_reg_prefix}{cmap.name}"
+            )
 
         # Add to dict
         cmaps[cmap.name] = cmap
