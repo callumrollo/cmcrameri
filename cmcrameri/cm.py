@@ -5,9 +5,11 @@ https://www.fabiocrameri.ch/colourmaps/
 Created by Callum Rollo
 2020-05-06
 """
+
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-
+from packaging import version
 
 _cmap_names_sequential = (
     "batlow", "batlowW", "batlowK",
@@ -58,7 +60,11 @@ def _load_cmaps():
 
     def register(cmap):
         # Register in Matplotlib
-        plt.cm.register_cmap(name=f"{cmap_reg_prefix}{cmap.name}", cmap=cmap)
+        if version.parse(matplotlib.__version__) < version.parse("3.5"):
+            plt.cm.register_cmap(name=f"{cmap_reg_prefix}{cmap.name}", cmap=cmap)
+        else:
+            matplotlib.colormaps.register(cmap=cmap, name=f"{cmap_reg_prefix}{cmap.name}")
+
         # Add to dict
         cmaps[cmap.name] = cmap
 
