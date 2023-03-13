@@ -35,4 +35,4 @@ jobs:
       shell: bash -l {0}
       run: >
         micromamba activate TEST
-        && python -m pytest -rxs --pyargs cmcrameri
+        && python -m pytest -rxs tests/
