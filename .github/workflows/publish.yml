@@ -1,6 +1,10 @@
 name: Publish to PyPI
 
 on:
+  pull_request:
+  push:
+    branches:
+      - main
   release:
     types:
       - published
@@ -9,43 +13,40 @@ jobs:
   packages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.x
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
 
-      - name: Get tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-        shell: bash
+    - name: Get tags
+      run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      shell: bash
 
-      - name: Install build tools
-        run: |
-          python -m pip install --upgrade pip wheel setuptools setuptools_scm build twine
-        shell: bash
+    - name: Install build tools
+      run: |
+        python -m pip install --upgrade pip wheel setuptools setuptools_scm build twine
 
-      - name: Build binary wheel
-        run: python -m build --sdist --wheel . --outdir dist
+      shell: bash
 
-      - name: CheckFiles
-        run: |
-          ls dist
-        shell: bash
-      - name: Test version
-        run: |
-          if [[ $(python setup.py --version) == "0.0.0" ]]; then
-            exit 1
-          fi
-        shell: bash
-      - name: Test wheels
-        run: |
-          cd dist && python -m pip install cmcrameri*.whl
-          python -m twine check *
-        shell: bash
+    - name: Build binary wheel
+      run: python -m build --sdist --wheel . --outdir dist
 
-      - name: Publish a Python distribution to PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+    - name: CheckFiles
+      run: |
+        ls dist
+      shell: bash
+
+    - name: Test wheels
+      run: |
+        cd dist && python -m pip install *.whl
+        python -m twine check *
+      shell: bash
+
+    - name: Publish a Python distribution to PyPI
+      if: success() && github.event_name == 'release'
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
