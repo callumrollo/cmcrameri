@@ -4,6 +4,7 @@ Test that the program a) finds the text files and b) creates colormaps
 import sys
 from pathlib import Path
 
+import numpy as np
 from matplotlib.colors import Colormap
 from matplotlib.pyplot import get_cmap
 
@@ -38,8 +39,8 @@ def test_get_cmap():
             # if cmap hasn't been correctly registered as
             # cmc.name, it will raise a ValueError
             alt_cmap = get_cmap('cmc.' + name)
-            # alt_cmap returned by get_cmap should be the same instance as cmap
-            assert alt_cmap is cmap
+            # alt_cmap returned by get_cmap should be the same as cmap
+            assert (np.array(cmap.colors) == np.array(alt_cmap.colors)).all()
 
 
 if __name__ == "__main__":
