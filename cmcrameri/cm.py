@@ -12,45 +12,62 @@ import numpy as np
 from packaging import version
 
 _cmap_names_sequential = (
-    "batlow", "batlowW", "batlowK",
-    "devon", "lajolla", "bamako",
-    "davos", "bilbao", "nuuk",
-    "oslo", "grayC", "hawaii", 
-    "lapaz", "tokyo", "buda",
-    "acton", "turku", "imola",
+    "batlow",
+    "batlowW",
+    "batlowK",
+    "devon",
+    "lajolla",
+    "bamako",
+    "davos",
+    "bilbao",
+    "nuuk",
+    "oslo",
+    "grayC",
+    "hawaii",
+    "lapaz",
+    "tokyo",
+    "buda",
+    "acton",
+    "turku",
+    "imola",
 )
 
 _cmap_names_diverging = (
-    "broc", "cork", "vik",
-    "lisbon", "tofino", "berlin",
-    "roma", "bam", "vanimo",
+    "broc",
+    "cork",
+    "vik",
+    "lisbon",
+    "tofino",
+    "berlin",
+    "roma",
+    "bam",
+    "vanimo",
 )
 
 _cmap_names_multi_sequential = (
-    "oleron", "bukavu", "fes",
+    "oleron",
+    "bukavu",
+    "fes",
 )
 
 _cmap_base_names_categorical = tuple(
-    name
-    for name in _cmap_names_sequential
-    if name not in {"batlowW", "batlowK"}
+    name for name in _cmap_names_sequential if name not in {"batlowW", "batlowK"}
 )
-_cmap_names_categorical = tuple(
-    f"{name}S"
-    for name in _cmap_base_names_categorical
-)
+_cmap_names_categorical = tuple(f"{name}S" for name in _cmap_base_names_categorical)
 
 _cmap_base_names_cyclic = (
-    "roma", "bam",
-    "broc", "cork", "vik",
+    "roma",
+    "bam",
+    "broc",
+    "cork",
+    "vik",
 )
-_cmap_names_cyclic = tuple(
-    f"{name}O"
-    for name in _cmap_base_names_cyclic
-)
+_cmap_names_cyclic = tuple(f"{name}O" for name in _cmap_base_names_cyclic)
+
 
 def _load_cmaps():
     from pathlib import Path
+
     from matplotlib.colors import ListedColormap
 
     # Prepended to cmap names when registering
@@ -69,8 +86,8 @@ def _load_cmaps():
         cmaps[cmap.name] = cmap
 
     # Find the colormap text files and make a list of the paths
-    cmap_data_dir = Path(__file__).parent / 'cmaps'
-    paths = sorted(cmap_data_dir.glob('*.txt'))
+    cmap_data_dir = Path(__file__).parent / "cmaps"
+    paths = sorted(cmap_data_dir.glob("*.txt"))
 
     # Load data and generate Colormap objects
     for cmap_path in paths:
@@ -80,7 +97,9 @@ def _load_cmaps():
         # Categorize
         is_categorical = cmap_name.endswith("S")
         is_cyclic = cmap_name.endswith("O")
-        cmap_name_base = cmap_name if not (is_categorical or is_cyclic) else cmap_name[:-1]
+        cmap_name_base = (
+            cmap_name if not (is_categorical or is_cyclic) else cmap_name[:-1]
+        )
         if not is_cyclic:
             is_sequential = cmap_name_base in _cmap_names_sequential
             is_diverging = cmap_name_base in _cmap_names_diverging
@@ -89,10 +108,12 @@ def _load_cmaps():
             is_sequential = is_diverging = is_multi_sequential = False
 
         # Check categorization
-        assert sum(
-            [is_cyclic, is_sequential, is_diverging, is_multi_sequential]
-        ) == 1, f"{cmap_name} not categorized properly"
-        assert not is_categorical or cmap_name_base in _cmap_base_names_categorical, cmap_name
+        assert (
+            sum([is_cyclic, is_sequential, is_diverging, is_multi_sequential]) == 1
+        ), f"{cmap_name} not categorized properly"
+        assert (
+            not is_categorical or cmap_name_base in _cmap_base_names_categorical
+        ), cmap_name
         assert not is_cyclic or cmap_name_base in _cmap_base_names_cyclic, cmap_name
 
         # Load data
@@ -149,30 +170,33 @@ def show_cmaps(*, ncols=6, figwidth=8):
     hrel_spacer = 0.3  # spacer height relative cmap row height
     hratios = [1 for _ in range(nrows)]
     for i in istarts:
-        hratios[i-1] = hrel_spacer  # group spacer row
+        hratios[i - 1] = hrel_spacer  # group spacer row
 
     hrow = 0.4  # size of cmap row
     hspace = 0.7  # hspace, relative to `hrow`
     hbottom = 0.2
     htop = 0.05
     figheight = (
-        hbottom + 
-        htop + 
-        hrow*nrows_cmaps + 
-        hrow*hrel_spacer*nrows_titles + 
-        hrow*hspace*(nrows - 1)
+        hbottom
+        + htop
+        + hrow * nrows_cmaps
+        + hrow * hrel_spacer * nrows_titles
+        + hrow * hspace * (nrows - 1)
     )
 
-    fig, axs = plt.subplots(nrows, ncols,
+    fig, axs = plt.subplots(
+        nrows,
+        ncols,
         figsize=(figwidth, figheight),
         gridspec_kw=dict(
-            left=0.01, right=0.99,
-            top=1 - htop/figheight,
-            bottom=hbottom/figheight,
-            hspace=hspace/np.mean(hratios),
+            left=0.01,
+            right=0.99,
+            top=1 - htop / figheight,
+            bottom=hbottom / figheight,
+            hspace=hspace / np.mean(hratios),
             wspace=0.08,
-            height_ratios=hratios
-        )
+            height_ratios=hratios,
+        ),
     )
     fig.set_tight_layout(False)
 
@@ -180,18 +204,32 @@ def show_cmaps(*, ncols=6, figwidth=8):
         ax.set_axis_off()
 
     for istart, (group_name, group) in zip(istarts, groups):
-
         # Group label
         ax0 = axs[istart, 0]
-        ax0.text(0.01, 1.02, group_name, size=24, c="0.4", style="italic", 
-            va="bottom", ha="left", transform=ax0.transAxes)
+        ax0.text(
+            0.01,
+            1.02,
+            group_name,
+            size=24,
+            c="0.4",
+            style="italic",
+            va="bottom",
+            ha="left",
+            transform=ax0.transAxes,
+        )
 
         for ax, cmap_name in zip(axs[istart:].flat, group):
-
             cmap = cmaps[cmap_name]
             ax.imshow(x, cmap=cmap, aspect="auto")
-            ax.text(0.01 * ncols/6, -0.03, cmap_name, size=14, color="0.2",
-                va="top", transform=ax.transAxes)
+            ax.text(
+                0.01 * ncols / 6,
+                -0.03,
+                cmap_name,
+                size=14,
+                color="0.2",
+                va="top",
+                transform=ax.transAxes,
+            )
 
 
 if __name__ == "__main__":

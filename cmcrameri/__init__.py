@@ -6,11 +6,9 @@ https://www.fabiocrameri.ch/colourmaps/
 
 See README.md for an overview and instructions.
 """
-from __future__ import absolute_import
 
 from . import cm
 from .cm import show_cmaps
-
 
 __all__ = (
     "cm",
@@ -18,7 +16,7 @@ __all__ = (
 )
 
 
-__authors__ = ['Callum Rollo <c.rollo@outlook.com>']
+__authors__ = ["Callum Rollo <c.rollo@outlook.com>"]
 
 __version__ = "1.4"
 

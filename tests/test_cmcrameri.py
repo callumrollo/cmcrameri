@@ -25,12 +25,13 @@ def test_cmap_import():
         increment = 1
         # See if it is a colormap.
         if isinstance(cmap, Colormap):
-            if name[-1] != 'S':
+            if name[-1] != "S":
                 increment = 0.5
             no_cmaps += increment
             cmap_names.append(name)
     # Should be as many colormaps as files plus reversed for non categorical ones
     assert int(no_cmaps) == len(cm.paths)
+
 
 def test_get_cmap():
     for name, cmap in vars(cm).items():
