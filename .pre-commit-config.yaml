@@ -1,0 +1,43 @@
+exclude: cmcrameri/cmaps
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+    - id: trailing-whitespace
+    - id: check-ast
+    - id: debug-statements
+    - id: end-of-file-fixer
+    - id: check-docstring-first
+    - id: check-added-large-files
+    - id: requirements-txt-fixer
+    - id: file-contents-sorter
+      files: requirements-dev.txt
+
+- repo: https://github.com/charliermarsh/ruff-pre-commit
+  rev: v0.0.254
+  hooks:
+    - id: ruff
+
+- repo: https://github.com/psf/black
+  rev: 23.1.0
+  hooks:
+  - id: black
+    language_version: python3
+
+- repo: https://github.com/keewis/blackdoc
+  rev: v0.3.8
+  hooks:
+    - id: blackdoc
+
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.2.4
+  hooks:
+    - id: codespell
+      args:
+        - --ignore-words-list=buda
+      # exclude: >
+      #   (?x)^(
+      #       .*\.csv |
+      #       .*\.json |
+      #   )$
