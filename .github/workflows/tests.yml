@@ -27,7 +27,7 @@ jobs:
     - name: Python ${{ matrix.python-version }}
       shell: bash -l {0}
       run: >
-        micromamba create --name TEST python=${{ matrix.python-version }} --file requirements.txt --channel conda-forge
+        micromamba create --name TEST python=${{ matrix.python-version }} pytest --file requirements.txt --channel conda-forge
         && micromamba activate TEST
         && python -m pip install -e . --no-deps --force-reinstall
 
