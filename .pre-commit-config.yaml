@@ -37,6 +37,17 @@ repos:
       args:
         - --ignore-words-list=buda
 
+- repo: https://github.com/tox-dev/pyproject-fmt
+  rev: "0.9.1"
+  hooks:
+    - id: pyproject-fmt
+
+- repo: https://github.com/aio-libs/sort-all
+  rev: "v1.2.0"
+  hooks:
+    - id: sort-all
+      types: [file, python]
+
 ci:
     autofix_commit_msg: |
         [pre-commit.ci] auto fixes from pre-commit.com hooks
