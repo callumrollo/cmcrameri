@@ -1,13 +1,16 @@
 [build-system]
-requires = ["setuptools>=41.2", "setuptools_scm", "wheel"]
 build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools>=41.2",
+  "setuptools_scm",
+  "wheel",
+]
 
 [project]
 name = "cmcrameri"
 description = "Perceptually uniform colormaps by Fabio Crameri"
 readme = "README.md"
 license = {file = "LICENSE.txt"}
-
 authors = [
     {name = "Callum Rollo", email = "c.rollo@outlook.com"},
 ]
@@ -16,8 +19,8 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "numpy",
   "matplotlib",
+  "numpy",
   "packaging",
 ]
 [project.urls]
