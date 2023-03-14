@@ -1,0 +1,16 @@
+include *.txt
+include README.md
+include pyproject.toml
+
+# CHANGE PKG NAME HERE
+graft cmcrameri
+
+prune docs
+prune tests
+prune notebooks
+prune *.egg-info
+exclude .github
+
+exclude *.yml
+exclude *.enc
+exclude *.gitignore

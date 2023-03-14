@@ -4,3 +4,4 @@ dist
 cmcrameri.egg-info
 venv
 .eggs
+cmcrameri/_version.py
