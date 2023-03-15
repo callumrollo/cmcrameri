@@ -1,6 +1,40 @@
 [build-system]
-requires = ["setuptools>=41.2", "setuptools_scm", "wheel"]
 build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools>=41.2",
+  "setuptools_scm",
+  "wheel",
+]
+
+[project]
+name = "cmcrameri"
+description = "Perceptually uniform colormaps by Fabio Crameri"
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+authors = [
+    {name = "Callum Rollo", email = "c.rollo@outlook.com"},
+]
+requires-python = ">=3.6"
+dynamic = [
+  "version",
+]
+dependencies = [
+  "matplotlib",
+  "numpy",
+  "packaging",
+]
+[project.urls]
+documentation = "https://callumrollo.github.io/cmcrameri"
+homepage = "https://pypi.org/project/cmcrameri/"
+repository = "https://github.com/callumrollo/cmcrameri"
+
+[tool.setuptools]
+packages = ["cmcrameri"]
+include-package-data = true
+
+[tool.setuptools_scm]
+write_to = "cmcrameri/_version.py"
+write_to_template = "__version__ = '{version}'"
 
 [tool.ruff]
 select = [
