@@ -4,6 +4,8 @@
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)]()
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)]()
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)]()
+[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)]()
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)]()
 
 [![Downloads](https://pepy.tech/badge/cmcrameri)](https://pepy.tech/project/cmcrameri) (PyPI)
 
