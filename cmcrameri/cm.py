@@ -30,6 +30,9 @@ _cmap_names_sequential = (
     "acton",
     "turku",
     "imola",
+    "glasgow",
+    "lipari",
+    "navia",
 )
 
 _cmap_names_diverging = (
@@ -42,6 +45,7 @@ _cmap_names_diverging = (
     "roma",
     "bam",
     "vanimo",
+    "managua",
 )
 
 _cmap_names_multi_sequential = (
