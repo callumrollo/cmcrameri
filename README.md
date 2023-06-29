@@ -20,7 +20,7 @@ This is a Python wrapper around Fabio Crameri's perceptually uniform colormaps.
 All credit for creating the colormaps to Fabio.
 Any errors in the Python implementation of colormaps are my own.
 
-This version is based on _Scientific colour maps_ [version 7.0](https://zenodo.org/record/4491293) (02.02.2021).
+This version is based on _Scientific colour maps_ [version 8.0](https://doi.org/10.5281/zenodo.8035877) (2023-06-14).
 
 ## Install
 
