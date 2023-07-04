@@ -14,8 +14,8 @@ repos:
     - id: file-contents-sorter
       files: requirements-dev.txt
 
-- repo: https://github.com/charliermarsh/ruff-pre-commit
-  rev: v0.0.260
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.0.276
   hooks:
     - id: ruff
 
@@ -31,14 +31,14 @@ repos:
     - id: blackdoc
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.4
+  rev: v2.2.5
   hooks:
     - id: codespell
       args:
         - --ignore-words-list=buda
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: "0.9.2"
+  rev: "0.13.0"
   hooks:
     - id: pyproject-fmt
 
