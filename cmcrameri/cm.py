@@ -54,9 +54,7 @@ _cmap_names_multi_sequential = (
     "fes",
 )
 
-_cmap_base_names_categorical = tuple(
-    name for name in _cmap_names_sequential if name not in {"batlowW", "batlowK"}
-)
+_cmap_base_names_categorical = tuple(_cmap_names_sequential)
 _cmap_names_categorical = tuple(f"{name}S" for name in _cmap_base_names_categorical)
 
 _cmap_base_names_cyclic = (
