@@ -6,6 +6,7 @@
 [![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)]()
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)]()
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)]()
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)]()
 
 [![Downloads](https://pepy.tech/badge/cmcrameri)](https://pepy.tech/project/cmcrameri) (PyPI)
 
