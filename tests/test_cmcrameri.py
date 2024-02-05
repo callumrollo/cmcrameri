@@ -1,6 +1,7 @@
 """
 Test that the program a) finds the text files and b) creates colormaps
 """
+
 import sys
 from pathlib import Path
 
