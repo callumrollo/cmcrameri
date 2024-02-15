@@ -34,7 +34,7 @@ dependencies = [
   "packaging",
 ]
 [project.urls]
-documentation = "https://callumrollo.github.io/cmcrameri"
+documentation = "https://github.com/callumrollo/cmcrameri"
 homepage = "https://pypi.org/project/cmcrameri/"
 repository = "https://github.com/callumrollo/cmcrameri"
 
