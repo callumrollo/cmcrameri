@@ -5,9 +5,9 @@
 
 ![python versions](https://img.shields.io/pypi/pyversions/cmcrameri.svg)
 
-![pypi](https://badge.fury.io/py/cmcrameri.svg) [![Downloads](https://pepy.tech/badge/cmcrameri)](https://pepy.tech/project/cmcrameri) 
+![pypi](https://badge.fury.io/py/cmcrameri.svg) [![Downloads](https://pepy.tech/badge/cmcrameri)](https://pepy.tech/project/cmcrameri)
 
-![anaconda badge](https://anaconda.org/conda-forge/cmcrameri/badges/version.svg) [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cmcrameri.svg)](https://anaconda.org/conda-forge/cmcrameri) 
+![anaconda badge](https://anaconda.org/conda-forge/cmcrameri/badges/version.svg) [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cmcrameri.svg)](https://anaconda.org/conda-forge/cmcrameri)
 
 
 This is a Python wrapper around Fabio Crameri's perceptually uniform colormaps.
