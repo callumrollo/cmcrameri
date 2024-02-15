@@ -1,18 +1,14 @@
-![Python package](https://github.com/callumrollo/cmcrameri/workflows/Python%20package/badge.svg)
-
-[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)]()
-[![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)]()
-[![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg)]()
-[![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)]()
-[![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)]()
-[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)]()
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)]()
-
-[![Downloads](https://pepy.tech/badge/cmcrameri)](https://pepy.tech/project/cmcrameri) (PyPI)
-
-[![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cmcrameri.svg)](https://anaconda.org/conda-forge/cmcrameri) (conda-forge)
-
 # cmcrameri
+
+
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+![python versions](https://img.shields.io/pypi/pyversions/cmcrameri.svg)
+
+![pypi](https://badge.fury.io/py/cmcrameri.svg) [![Downloads](https://pepy.tech/badge/cmcrameri)](https://pepy.tech/project/cmcrameri) 
+
+![anaconda badge](https://anaconda.org/conda-forge/cmcrameri/badges/version.svg) [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/cmcrameri.svg)](https://anaconda.org/conda-forge/cmcrameri) 
+
 
 This is a Python wrapper around Fabio Crameri's perceptually uniform colormaps.
 
