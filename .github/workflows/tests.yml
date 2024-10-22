@@ -15,24 +15,20 @@ jobs:
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4
+
+    - name: Setup Micromamba Python ${{ matrix.python-version }}
+      uses: mamba-org/setup-micromamba@617811f69075e3fd3ae68ca64220ad065877f246 #v1
       with:
-        fetch-depth: 0
+        environment-name: TEST
+        init-shell: bash
+        create-args: >-
+          python=${{ matrix.python-version }} --file requirements.txt --channel conda-forge
 
-    - name: Setup Micromamba
-      uses: mamba-org/provision-with-micromamba@v16
-      with:
-        environment-file: false
+    - name: Install cmcrameri
+      run: |
+        python -m pip install -e . --no-deps --force-reinstall
 
-    - name: Python ${{ matrix.python-version }}
-      shell: bash -l {0}
-      run: >
-        micromamba create --name TEST python=${{ matrix.python-version }} pytest --file requirements.txt --channel conda-forge
-        && micromamba activate TEST
-        && python -m pip install -e . --no-deps --force-reinstall
-
-    - name: Tests
-      shell: bash -l {0}
-      run: >
-        micromamba activate TEST
-        && python -m pytest -rxs tests/
+    - name: Full Tests
+      run: |
+        python -m pytest -rxs tests/
