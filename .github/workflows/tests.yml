@@ -27,8 +27,8 @@ jobs:
 
     - name: Install cmcrameri
       run: |
-        python -m pip install -e . --no-deps --force-reinstall
+        micromamba activate TEST && python -m pip install -e . --no-deps --force-reinstall
 
     - name: Full Tests
       run: |
-        python -m pytest -rxs tests/
+        micromamba activate TEST && python -m pytest -rxs tests/
