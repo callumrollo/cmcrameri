@@ -26,9 +26,11 @@ jobs:
           python=${{ matrix.python-version }} --file requirements.txt --channel conda-forge
 
     - name: Install cmcrameri
+      shell: bash 
       run: |
         micromamba activate TEST && python -m pip install -e . --no-deps --force-reinstall
 
     - name: Full Tests
+      shell: bash
       run: |
         micromamba activate TEST && python -m pytest -rxs tests/
