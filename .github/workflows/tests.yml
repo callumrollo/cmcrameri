@@ -26,7 +26,7 @@ jobs:
         environment-name: TEST
         init-shell: bash
         create-args: >-
-          python=${{ matrix.python-version }} --file requirements.txt --channel conda-forge
+          python=${{ matrix.python-version }} pytest --file requirements.txt --channel conda-forge
 
     - name: Install cmcrameri
       run: |
