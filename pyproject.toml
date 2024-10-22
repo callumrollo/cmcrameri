@@ -2,7 +2,7 @@
 build-backend = "setuptools.build_meta"
 requires = [
   "setuptools>=41.2",
-  "setuptools_scm",
+  "setuptools-scm",
   "wheel",
 ]
 
@@ -10,9 +10,9 @@ requires = [
 name = "cmcrameri"
 description = "Perceptually uniform colormaps by Fabio Crameri"
 readme = "README.md"
-license = {file = "LICENSE.txt"}
+license = { file = "LICENSE.txt" }
 authors = [
-    {name = "Callum Rollo", email = "c.rollo@outlook.com"},
+  { name = "Callum Rollo", email = "c.rollo@outlook.com" },
 ]
 requires-python = ">=3.6"
 classifiers = [
@@ -33,13 +33,12 @@ dependencies = [
   "numpy",
   "packaging",
 ]
-[project.urls]
-documentation = "https://github.com/callumrollo/cmcrameri"
-homepage = "https://pypi.org/project/cmcrameri/"
-repository = "https://github.com/callumrollo/cmcrameri"
+urls.documentation = "https://github.com/callumrollo/cmcrameri"
+urls.homepage = "https://pypi.org/project/cmcrameri/"
+urls.repository = "https://github.com/callumrollo/cmcrameri"
 
 [tool.setuptools]
-packages = ["cmcrameri"]
+packages = [ "cmcrameri" ]
 include-package-data = true
 
 [tool.setuptools_scm]
@@ -47,13 +46,12 @@ write_to = "cmcrameri/_version.py"
 write_to_template = "__version__ = '{version}'"
 
 [tool.ruff]
-select = [
-    "F", # flakes
-    "I", # import sorting
-    "U", # upgrade
-]
 target-version = "py37"
 line-length = 120
 
-[tool.ruff.per-file-ignores]
-"docs/conf.py" = ["E402"]
+select = [
+  "F", # flakes
+  "I", # import sorting
+  "U", # upgrade
+]
+per-file-ignores."docs/conf.py" = [ "E402" ]
