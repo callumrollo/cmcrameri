@@ -2,7 +2,7 @@ exclude: cmcrameri/cmaps
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.6.0
+  rev: v5.0.0
   hooks:
     - id: trailing-whitespace
     - id: check-ast
@@ -15,12 +15,12 @@ repos:
       files: requirements-dev.txt
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.6.3
+  rev: v0.7.2
   hooks:
     - id: ruff
 
 - repo: https://github.com/psf/black
-  rev: 24.8.0
+  rev: 24.10.0
   hooks:
   - id: black
     language_version: python3
@@ -38,13 +38,13 @@ repos:
         - --ignore-words-list=buda
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: "2.2.1"
+  rev: "v2.5.0"
   hooks:
     - id: pyproject-fmt
       additional_dependencies: ["tox>=4.9"]
 
 - repo: https://github.com/aio-libs/sort-all
-  rev: "v1.2.0"
+  rev: "v1.3.0"
   hooks:
     - id: sort-all
       types: [file, python]
