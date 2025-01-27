@@ -47,6 +47,12 @@ plt.axis('off')
 plt.show()
 ```
 
+For a discretized colormap like batlow split into 25 levels, you can use the [`.resampled`](https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.ListedColormap.html#matplotlib.colors.ListedColormap.resampled) method on any of the colormaps:
+
+```
+plt.imshow(x, aspect='auto', cmap=cmc.batlow.resampled(25))
+```
+
 Alternatively, the registered name string can be used.
 
 ```python
