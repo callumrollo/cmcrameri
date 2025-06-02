@@ -15,7 +15,7 @@ repos:
       files: requirements-dev.txt
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.11.8
+  rev: v0.11.12
   hooks:
     - id: ruff
 
@@ -38,7 +38,7 @@ repos:
         - --ignore-words-list=buda
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: "v2.5.1"
+  rev: "v2.6.0"
   hooks:
     - id: pyproject-fmt
       additional_dependencies: ["tox>=4.9"]
