@@ -93,3 +93,10 @@ paths
 ## License
 
 This work is licensed under an [MIT license](https://mit-license.org/).
+
+## Usage
+
+                        
+[![Stargazers over time](https://starchart.cc/callumrollo/cmcrameri.svg?variant=adaptive)](https://starchart.cc/callumrollo/cmcrameri)
+
+                    
