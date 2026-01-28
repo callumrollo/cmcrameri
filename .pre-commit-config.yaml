@@ -38,7 +38,7 @@ repos:
         - --ignore-words-list=buda
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: "v2.5.1"
+  rev: "v2.11.1"
   hooks:
     - id: pyproject-fmt
       additional_dependencies: ["tox>=4.9"]

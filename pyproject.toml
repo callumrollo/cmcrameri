@@ -24,6 +24,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
 ]
 dynamic = [
   "version",
@@ -55,3 +56,9 @@ select = [
   "U", # upgrade
 ]
 per-file-ignores."docs/conf.py" = [ "E402" ]
+
+[tool.pyproject-fmt]
+
+column_width = 120
+indent = 2
+max_supported_python = "3.14"
