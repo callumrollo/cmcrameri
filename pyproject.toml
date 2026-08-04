@@ -1,10 +1,6 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = [
-  "setuptools>=41.2",
-  "setuptools-scm",
-  "wheel",
-]
+requires = [ "setuptools>=41.2", "setuptools-scm" ]
 
 [project]
 name = "cmcrameri"
@@ -49,16 +45,14 @@ write_to_template = "__version__ = '{version}'"
 [tool.ruff]
 target-version = "py37"
 line-length = 120
-
+per-file-ignores."docs/conf.py" = [ "E402" ]
 select = [
   "F", # flakes
   "I", # import sorting
   "U", # upgrade
 ]
-per-file-ignores."docs/conf.py" = [ "E402" ]
 
 [tool.pyproject-fmt]
-
 column_width = 120
 indent = 2
 max_supported_python = "3.14"
