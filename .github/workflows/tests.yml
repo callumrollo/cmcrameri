@@ -10,8 +10,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.8", "3.10", "3.12", "3.14"]
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10",  "3.11", "3.12", "3.13", "3.14" ]
+        os: [ ubuntu-latest ]
+        include:
+          - os: windows-latest
+            python-version: "3.14"
+          - os: macos-latest
+            python-version: "3.14"
       fail-fast: false
     defaults:
       run:
