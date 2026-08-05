@@ -23,7 +23,7 @@ jobs:
         shell: bash -l {0}
 
     steps:
-    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
 
     - name: Setup Micromamba Python ${{ matrix.python-version }}
       uses: mamba-org/setup-micromamba@ce51e99f4bb8a82ab7158c4dc59ef4634c59c4f9 #v1
